@@ -112,10 +112,10 @@ export default function Page() {
                     size="lg"
                     className="rounded-full bg-transparent hover:bg-white/10 border-white/30 hover:border-white/50 transition-all duration-300"
                   >
-                    <Link href="/Mohammad_Attique_Resume.pdf">
+                    <a href="/Mohammad_Attique_Resume.pdf" download>
                       <Download className="mr-2 h-4 w-4" />
                       CV
-                    </Link>
+                    </a>
                   </Button>
                 </div>
 
@@ -143,7 +143,7 @@ export default function Page() {
 
                 {/* Experience & Education */}
                 <div className="mt-10">
-                  <p className="mb-3 text-3xl font-semibold tracking-widest text-white">EXPERIENCE & EDUCATION</p>
+                  <p className="mb-3 text-3xl font-semibold tracking-widest text-white">Companies I have worked with</p>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-1xl  font-semibold text-white/60 opacity-80">
                     <li className="hover:text-white transition-colors cursor-default">Alachisoft</li>
                     <li className="hover:text-white transition-colors cursor-default">FAST (NUCES)</li>

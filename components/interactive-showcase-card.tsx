@@ -84,7 +84,7 @@ function clearLines(b: Board, setScore: React.Dispatch<React.SetStateAction<numb
 	return newBoard
 }
 
-function TetrisGame({ blockOutline = "#000", size = 28 }: { blockOutline?: string, size?: number }) {
+function TetrisGame({ blockOutline = "#000", size }: { blockOutline?: string, size?: number }) {
 	const [board, setBoard] = useState<Board>(Array.from({ length: ROWS }, () => Array(COLS).fill(null)))
 	const [piece, setPiece] = useState<Piece>(randomPiece())
 	const [score, setScore] = useState<number>(0)
@@ -161,20 +161,20 @@ function TetrisGame({ blockOutline = "#000", size = 28 }: { blockOutline?: strin
 		}
 	}
 
-	// Mobile controls
-	function handleMobileControl(action: string) {
-		if (gameOver) return
-		if (action === "left") move(-1)
-		if (action === "right") move(1)
-		if (action === "down") drop()
-		if (action === "rotate") rotate()
+	// Consistent board size for desktop, smaller for mobile
+	let boardWidth = 560;
+	let boardHeight = 900;
+	if (typeof window !== "undefined" && window.innerWidth <= 480) {
+		boardWidth = 340;
+		boardHeight = 480;
 	}
+	const blockSize = Math.floor(Math.min(boardWidth / COLS, boardHeight / ROWS));
 
 	return (
 		<div className="flex flex-col items-center justify-center h-full">
 			<div
 				className="bg-neutral-800 border border-white/20 rounded-lg"
-				style={{ width: COLS * size, height: ROWS * size, position: "relative" }}
+				style={{ width: COLS * blockSize, height: ROWS * blockSize, position: "relative", maxWidth: boardWidth, maxHeight: boardHeight }}
 			>
 				{display.map((row, y) =>
 					row.map((cell, x) => (
@@ -182,10 +182,10 @@ function TetrisGame({ blockOutline = "#000", size = 28 }: { blockOutline?: strin
 							key={x + "," + y}
 							style={{
 								position: "absolute",
-								left: x * size,
-								top: y * size,
-								width: size,
-								height: size,
+								left: x * blockSize,
+								top: y * blockSize,
+								width: blockSize,
+								height: blockSize,
 								background: cell || "#222",
 								border: cell ? `2px solid ${blockOutline}` : "1px solid #111",
 								boxSizing: "border-box",
@@ -215,29 +215,29 @@ export default function InteractiveShowcaseCard({ revealDelay = 0 }: { revealDel
 			>
 				<div className="relative overflow-hidden rounded-[1.35rem] bg-black lg:h-full p-0 flex flex-col md:flex-row justify-between items-stretch min-h-[60vh]">
 					{/* Left: Controls & Title */}
-					<div className="flex flex-col justify-center items-center w-full max-w-xl p-8 gap-10">
-						<h2 className="text-4xl md:text-6xl font-extrabold mb-8 text-white text-center leading-tight animate-accordion-down">Bored of scrolling?<br/>Play Tetris!</h2>
-						<div className="flex flex-col gap-8 items-center">
-							<div className="flex gap-4">
+					<div className="flex flex-col justify-center items-center w-full max-w-xl p-2 md:p-8 md:gap-10">
+						<h2 className="text-2xl md:text-6xl font-extrabold mb-2 md:mb-8 text-white text-center leading-tight animate-accordion-down">Bored of scrolling?<br/>Play Tetris!</h2>
+						<div className="flex flex-col gap-4 md:gap-8 items-center">
+							<div className="flex gap-2 md:gap-4 flex-wrap justify-center">
 								<button
-									className="px-8 py-5 rounded-2xl  bg-gray-700 text-white border-none text-3xl font-bold shadow-xl hover:scale-110 hover:shadow-2xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+									className="px-4 py-3 rounded-xl bg-gray-700 text-white border-none text-xl font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
 									onClick={() => document.getElementById('tetris-left')?.click()}
 								>◀️</button>
 								<button
-									className="px-8 py-5 rounded-2xl  bg-gray-700 text-white border-none text-3xl font-bold shadow-xl hover:scale-110 hover:shadow-2xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500"
+									className="px-4 py-3 rounded-xl bg-gray-700 text-white border-none text-xl font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500"
 									onClick={() => document.getElementById('tetris-rotate')?.click()}
 								>🔄</button>
 								<button
-									className="px-8 py-5 rounded-2xl  bg-gray-700 text-white border-none text-3xl font-bold shadow-xl hover:scale-110 hover:shadow-2xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+									className="px-4 py-3 rounded-xl bg-gray-700 text-white border-none text-xl font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
 									onClick={() => document.getElementById('tetris-right')?.click()}
 								>▶️</button>
 								<button
-									className="px-8 py-5 rounded-2xl bg-gray-700 text-white border-none text-3xl font-bold shadow-xl hover:scale-110 hover:shadow-2xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500"
+									className="px-4 py-3 rounded-xl bg-gray-700 text-white border-none text-xl font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500"
 									onClick={() => document.getElementById('tetris-down')?.click()}
 								>⬇️</button>
 							</div>
 							<button
-								className="px-10 py-5 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-400 text-white border-none text-2xl font-bold shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-200 mt-6 focus:outline-none focus:ring-2 focus:ring-pink-400"
+								className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-400 text-white border-none text-base md:text-2xl font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 mt-2 md:mt-6 focus:outline-none focus:ring-2 focus:ring-pink-400"
 								onClick={() => document.getElementById('tetris-refresh')?.click()}
 							>
 								Refresh
@@ -245,8 +245,8 @@ export default function InteractiveShowcaseCard({ revealDelay = 0 }: { revealDel
 						</div>
 					</div>
 					{/* Right: Game - bigger and covers the card */}
-					<div className="flex flex-col justify-center items-center flex-1 p-0 h-full animate-fade-in">
-						<TetrisGame blockOutline="#000" size={32} />
+					<div className="flex flex-col justify-center items-center flex-1 p-2 md:p-0 h-full animate-fade-in">
+						<TetrisGame blockOutline="#000" size={Math.max(20, Math.min(32, Math.floor(window.innerWidth / (COLS + 2))))} />
 						{/* Hidden buttons for controls, triggered by left panel */}
 						<div style={{ display: 'none' }}>
 							<button id="tetris-left" onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }))} />
