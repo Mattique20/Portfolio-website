@@ -72,11 +72,9 @@ export default function ExperienceCard({ revealDelay = 0 }: Props) {
               {experiences.map((exp, idx) => (
                 <div
                   key={exp.company}
-                  className="border-l-2 border-white/20 pl-4 pb-6 last:pb-0 animate-fadein"
+                  className={`border-l-2 border-white/20 pl-4 pb-6 last:pb-0 experience-left-in`}
                   style={{
                     animationDelay: `${idx * 0.15 + 0.1}s`,
-                    animationDuration: "0.8s",
-                    animationFillMode: "both"
                   }}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2">

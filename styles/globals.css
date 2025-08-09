@@ -121,3 +121,33 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Add to globals.css for experience card animation */
+@keyframes experience-ease-in {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.experience-ease-in {
+  animation: experience-ease-in 0.8s ease-in both;
+}
+
+/* Add to globals.css for experience card left-in animation */
+@keyframes experience-left-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.experience-left-in {
+  animation: experience-left-in 0.8s cubic-bezier(0.4,0,0.2,1) both;
+}

@@ -161,18 +161,18 @@ function TetrisGame({ blockOutline = "#000", size }: { blockOutline?: string, si
 		}
 	}
 
-	// Responsive size for mobile and desktop
-	const isMobile = typeof window !== "undefined" && window.innerWidth <= 480;
-	const boardWidth = isMobile ? 340 : 560;
-	const boardHeight = isMobile ? 480 : 900;
-	const blockSize = Math.floor(Math.min(boardWidth / COLS, boardHeight / ROWS));
+		// Responsive size for mobile and desktop
+		const isMobile = typeof window !== "undefined" && window.innerWidth <= 480;
+		const boardWidth = isMobile ? 340 : 560;
+		const boardHeight = isMobile ? 480 : 900;
+		const blockSize = Math.floor(Math.min(boardWidth / COLS, boardHeight / ROWS));
 
 	return (
-		<div className="flex flex-col items-center justify-center h-full">
-			<div
-				className="bg-neutral-800 border border-white/20 rounded-lg"
-				style={{ width: COLS * blockSize, height: ROWS * blockSize, position: "relative", maxWidth: boardWidth, maxHeight: boardHeight }}
-			>
+			<div className="flex flex-col items-center justify-center h-full">
+				<div
+					className="bg-neutral-800 border border-white/20 rounded-lg"
+					style={{ width: COLS * blockSize, height: ROWS * blockSize, position: "relative", maxWidth: boardWidth, maxHeight: boardHeight }}
+				>
 				{display.map((row, y) =>
 					row.map((cell, x) => (
 						<div
@@ -217,7 +217,7 @@ export default function InteractiveShowcaseCard({ revealDelay = 0 }: { revealDel
 						<div className="flex flex-col gap-4 md:gap-8 items-center">
 							<div className="flex gap-2 md:gap-4 flex-wrap justify-center">
 								<button
-									className="px-4 py-3 rounded-xl bg-gray-700 text-white border-none text-xl font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+									className="px-4 py-3 rounded-xl bg-gray-700 text-white border-none text-xl font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 focus:ring-2 focus:ring-yellow-400"
 									onClick={() => document.getElementById('tetris-left')?.click()}
 								>◀️</button>
 								<button

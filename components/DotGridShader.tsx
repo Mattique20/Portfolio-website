@@ -11,17 +11,25 @@ export default function DotGridShader(props: DotGridShaderProps) {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return
-      const rect = containerRef.current.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-      // Parallax: map mouse position to a small offset
-      const px = ((x / rect.width) - 0.5) * 30 // max 30px shift
-      const py = ((y / rect.height) - 0.5) * 30
-      setParallax({ x: px, y: py })
-    }
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      // Only respond if mouse is inside the container
+      if (
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom
+      ) {
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        // Parallax: map mouse position to a small offset
+        const px = ((x / rect.width) - 0.5) * 30; // max 30px shift
+        const py = ((y / rect.height) - 0.5) * 30;
+        setParallax({ x: px, y: py });
+      }
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [])
 
   return (
