@@ -69,17 +69,21 @@ export default function ContactCard({ revealDelay = 0 }: Props) {
 
             <div className="space-y-4">
               <Button asChild size="lg" className="w-full rounded-full">
-                <Link href="mailto:brandon@portfolio.dev">
+                <Link href="mailto:mattique02@outlook.com">
                   <Mail className="mr-2 h-4 w-4" />
                   Send me an email
                 </Link>
               </Button>
 
               <Button asChild variant="outline" size="lg" className="w-full rounded-full bg-transparent">
-                <Link href="/calendar">
-                  <ExternalLink className="mr-2 h-4 w-4" />
-                  Schedule a call
-                </Link>
+             < Link
+        href="https://calendly.com/mattique02" // Or your specific event link
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <ExternalLink className="mr-2 h-4 w-4" />
+        Schedule a call with Calendly
+    </Link>
               </Button>
             </div>
 

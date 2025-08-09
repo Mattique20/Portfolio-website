@@ -21,7 +21,7 @@ export default function Page() {
     {
       title: "Art2Sprite",
       subtitle: "Pixel art generator",
-      imageSrc: "/images/A2S Video.MP4",
+      imageSrc: "/images/A2S-Video.MP4",
       tags: ["Generative AI", "Python", "Web App", "Github"],
       href: "https://github.com/Mattique20/Art2Sprite", // Github link
       priority: true,
