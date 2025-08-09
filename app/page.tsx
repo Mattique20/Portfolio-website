@@ -112,7 +112,7 @@ export default function Page() {
                     size="lg"
                     className="rounded-full bg-transparent hover:bg-white/10 border-white/30 hover:border-white/50 transition-all duration-300"
                   >
-                    <Link href="/public/Mohammad_Attique_Resume.pdf">
+                    <Link href="/Mohammad_Attique_Resume.pdf">
                       <Download className="mr-2 h-4 w-4" />
                       CV
                     </Link>
