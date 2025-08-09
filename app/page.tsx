@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ArrowRight, Download, Mail, Github, Linkedin } from "lucide-react"
+import dynamic from "next/dynamic"
 
 import { Button } from "@/components/ui/button"
 import DotGridShader from "@/components/DotGridShader"
@@ -12,7 +13,7 @@ import ExperienceCard from "@/components/experience-card"
 import AboutCard from "@/components/about-card"
 import ContactCard from "@/components/contact-card"
 import LiveStatsCard from "@/components/live-stats-card"
-import InteractiveShowcaseCard from "@/components/interactive-showcase-card"
+import InteractiveShowcaseClient from "@/components/InteractiveShowcaseClient"
 import InterestsCard from "@/components/testimonials-card"
 import LiveClock from "@/components/live-clock"
 
@@ -143,33 +144,27 @@ export default function Page() {
 
                 {/* Experience & Education */}
                 <div className="mt-10">
-                  <p className="mb-3 text-3xl font-semibold tracking-widest text-white">Companies I have worked with</p>
+                  <p className="mb-3 text-3xl font-semibold tracking-widest text-white">EXPERIENCE & EDUCATION</p>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-1xl  font-semibold text-white/60 opacity-80">
                     <li className="hover:text-white transition-colors cursor-default">Alachisoft</li>
                     <li className="hover:text-white transition-colors cursor-default">FAST (NUCES)</li>
                     <li className="hover:text-white transition-colors cursor-default">Bitnine Global</li>
                     <li className="hover:text-white transition-colors cursor-default">IKNEX Lab</li>
-                    
                   </ul>
                 </div>
               </div>
             </RevealOnView>
           </aside>
-
           {/* RIGHT: horizontal scrollable sections */}
           <div className="space-y-4">
             {/* About Section */}
             <AboutCard revealDelay={0} />
-
             {/* Live Stats Card - NEW! */}
             <LiveStatsCard revealDelay={0.06} />
-
             {/* Skills Section */}
             <SkillsCard revealDelay={0.12} />
-
             {/* Interactive Showcase - NEW! */}
-            <InteractiveShowcaseCard revealDelay={0.18} />
-
+            <InteractiveShowcaseClient revealDelay={0.18} />
             {/* Projects Section */}
             {projects.map((p, idx) => (
               <ProjectCard
@@ -188,13 +183,10 @@ export default function Page() {
                 video={p.video}
               />
             ))}
-
             {/* Interests Card - NEW! */}
             <InterestsCard />
-
             {/* Experience Section */}
             <ExperienceCard revealDelay={(projects.length + 5) * 0.06} />
-
             {/* Contact Section */}
             <ContactCard revealDelay={(projects.length + 6) * 0.06} />
           </div>
