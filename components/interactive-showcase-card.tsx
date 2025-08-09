@@ -161,13 +161,10 @@ function TetrisGame({ blockOutline = "#000", size }: { blockOutline?: string, si
 		}
 	}
 
-	// Consistent board size for desktop, smaller for mobile
-	let boardWidth = 560;
-	let boardHeight = 900;
-	if (typeof window !== "undefined" && window.innerWidth <= 480) {
-		boardWidth = 340;
-		boardHeight = 480;
-	}
+	// Responsive size for mobile and desktop
+	const isMobile = typeof window !== "undefined" && window.innerWidth <= 480;
+	const boardWidth = isMobile ? 340 : 560;
+	const boardHeight = isMobile ? 480 : 900;
 	const blockSize = Math.floor(Math.min(boardWidth / COLS, boardHeight / ROWS));
 
 	return (
