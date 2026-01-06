@@ -340,7 +340,7 @@ export default function ColorCrashGameCard({ revealDelay = 0 }: { revealDelay?: 
   }, [jump]);
 
   return (
-    <article className="group relative h-[calc(100svh-2rem)] md:h-[900px] w-full select-none">
+    <article className="group relative h-[calc(100vh+2rem)] md:h-[900px] w-full select-none">
       <RevealOnView
         delay={revealDelay}
         className="rounded-3xl border border-white/10 p-1 shadow-[0_10px_60px_-10px_rgba(0,0,0,0.6)] h-full flex flex-col"
