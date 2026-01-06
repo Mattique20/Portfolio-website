@@ -27,6 +27,15 @@ export default function AboutSection() {
               <div className="space-y-4">
                 <ExperienceItem
                   title="SQA Engineer"
+                  org="Qlu.ai"
+                  date="Aug 2025 – Dec 2025"
+                  location="Islamabad, Pakistan"
+                  bullets={["Automated manual test cases using Python, reducing regression testing time by 50%.",
+                            "Evaluated LLM performance and improved model response accuracy.",
+                            "Maintained tests to improve coverage and accelerate release timelines."]}
+                />
+                <ExperienceItem
+                  title="SQA Engineer"
                   org="Alachisoft"
                   date="May 2025 – Aug 2025"
                   location="Islamabad, Pakistan"

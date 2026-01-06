@@ -8,6 +8,16 @@ type Props = {
 export default function ExperienceCard({ revealDelay = 0 }: Props) {
   const experiences = [
     {
+       title:"SQA Engineer",
+       company:"Qlu.ai",
+       period:"Aug 205 – Dec 2025 | Islamabad, Pakistan",
+       location:"Islamabad, Pakistan",
+       description:["Automated manual test cases using Python, reducing regression testing time by 50%.",
+                    "Evaluated LLM performance and improved model response accuracy.",
+                    "Maintained tests to improve coverage and accelerate release timelines."],
+       technologies: ["NCache", "Automation", "Testing"]
+    },
+    {
       title: "SQA Engineer",
       company: "Alachisoft",
       period: "May 2025 – Aug 2025 | Islamabad, Pakistan",
